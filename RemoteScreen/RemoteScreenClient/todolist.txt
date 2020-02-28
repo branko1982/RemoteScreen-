@@ -1,0 +1,63 @@
+﻿List veci ktoré treba dorobiť.
+
+- Zobrazenie viacerých výstupov v hlavnom okne, a ich aktualizácia v reálnom čase.
+Tým myslím že keď sa pripojí jeden klient, v okne servera sa zobrazí položka v liste, kde po kliknutí na ňu, sa bude dať zobraziť výstup zo servera v novom okne.
+V hlavnom okne bude list aktuálne pripojených klientov,a monžosť zobraziŤ si ich aktuálny výstup po kliknutí mišou na ne.
+
+Server by mal mať možnosť klientov odpájať a tiež nastavovať niektoré ich vnútorné premenné.
+AKo napríklad veľkosť streamovaného rozlíšenia.
+
+
+
+Urobiť lepšiu kompresiu dát.
+Teraz sa pri FULL HD obrazovke odosiela 1 megabajt za sekundu pri 32bitovej hĺbke obrazu.
+Jeden snímok má veľkosť asi 500 kb pri Full HD.
+
+Ťu pomáhajú aj malé ruie
+
+- zmenšiť rozmery snímku pri odosielaní mohlo by to byť 1366 x 768
+- server informovať o reálnom a škálovanom 
+
+Mohol by som odosielať len časti obrazovky ktoré sa zmenia a tak veľkosť dát podstatne znížiť.
+čo by ale, čo je náročné.
+
+
+- Správne detekovať rozmery obrazovky - DONE! Je to možné pomocou zabudovanej Dllka ktoré má windows. Cez GetDeviceCaps.
+Stiahol som zo stackoverflow jeden fungujúc príklad. Ide to.
+
+- GUi na serveri prerobiť, aby vyzerala aspoň ako z roku 2015
+
+
+9.3.2019
+
+Toto už vyžaduje aby som yi to poznačil. Nemôžem to držať v hlave:
+Takže:
+
+
+Ak server operátorovy na 
+
+
+
+Proces získania výstupu z iného klienta:
+
+
+
+Operátor -> pošle na server 
+string vo formáte get_video|názov klienta?
+
+
+server má na svojej strane switch statement ktorý to spracuje
+
+
+Čo tu musím vylepšiť:
+Poslať dáta na server v json tvare
+
+command
+
+Prvý problém tkorý tu vidíám je že neposielam názov klienta ktorý sa dá z dát ľahko extrahovať.
+A tiež , neposielam na server ip adresu ani port klienta, čo by som mal tiež. Takže najprv , odoslať na server vždy json objekt, a ten samozrejme pomocou .NET-u serializovať a deserializovať.
+
+Potom , keď bude posielanie príkazov v json tvare na server, dorobené, postúpim ďalej.
+
+Aplikácia je založená na tom že si vymiena nejaké jsony. Operátor si vymieňa informácie najme pomocou json stringov a naopak. Tak isto aj klient používa jsony.
+Ale odosielajú sa aj normálne obrázky.
